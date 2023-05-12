@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>Lesson List</h1>
+        <div id="main">
+        <div id="lesson"  v-for="lesson in lessons" :key="lesson.location">
+          
+          <ul>
+            <li >
+              topic  {{  lesson.topic }} 
+            </li>
+            <li> location {{ lesson.location }}</li>
+            <li>price {{ lesson.location }}</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+
+      <script type="text/javascript">
+      var webstore =  new Vue(
+        {
+        el: '#app',
+        data:{
+          lessons: [],
+        },
+        created:
+          function(){
+            fetch('http://localhost:3000/lessons').then(
+              function(response){
+                response.json().then(
+                  function(json){
+                      webstore.lessons = json
+                      console.log("lessons" + this.lessons)
+                      console.log("lessons json" + json)
+                      console.log("lessons webstore" + webstore.lessons)
+                  }
+                )
+              }
+            )
+
+            fetch('http://localhost:3000/user').then(
+              function(response){
+                response.json().then(
+                  function(json){
+                      webstore.user = json
+                      
+                  }
+                )
+              }
+            )
+          
+        }
+      });
+
+    </script>
+</body>
+</html>

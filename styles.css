@@ -1,0 +1,11 @@
+div #lesson{    
+    /*display: flex; */
+       border: 1px solid lightblue;
+       width: 200px;
+       margin-left: 20px;
+        
+   }
+   
+   div #main {
+       display: flex;
+   }
